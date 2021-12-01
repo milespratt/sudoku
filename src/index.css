@@ -1,6 +1,23 @@
+:root {
+  --black: #2b2b2b;
+  --darkGray: #cccccc;
+  --lightGray: #e6e5e5;
+  --green: #13855f;
+  --red: #e32822;
+  --blue: #027bc2;
+  --white: #f5f5f5;
+  --lightBlue: #e6f6fc;
+}
+
+#root {
+  height: 100%;
+}
+
 html,
 body {
   height: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background: var(--white);
 }
 
 body {

@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./styles/Board.css";
 
 import Cell from "./Cell";
 
-export default function Board({ puzzle, progress, setProgress }) {
+export default function Board({ puzzle, progress, setProgress, solveStatus }) {
   function buildBoard() {
     const cells = [];
     for (let r = 0; r < 9; r++) {
@@ -23,6 +24,7 @@ export default function Board({ puzzle, progress, setProgress }) {
             disabled={puzzle[r][c] !== 0}
             setProgress={setProgress}
             progress={progress}
+            solveStatus={solveStatus}
           />
         );
       }
@@ -32,7 +34,15 @@ export default function Board({ puzzle, progress, setProgress }) {
   }
 
   return (
-    <div className="board">
+    <div
+      className={
+        solveStatus.toLowerCase() === "solved"
+          ? "board solved"
+          : solveStatus.toLowerCase() === "broken"
+          ? "board broken"
+          : "board"
+      }
+    >
       {!puzzle || !progress ? (
         <span className="loading-text">Loading...</span>
       ) : (
