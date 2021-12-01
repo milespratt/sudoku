@@ -1,6 +1,10 @@
 .App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
 }
-
 .board-controls {
   margin: 10px auto;
   width: 95%;
@@ -10,21 +14,13 @@
   grid-gap: 10px;
 }
 
-.board-controls__difficulty {
-  display: flex;
-  justify-content: space-between;
-}
-
-.board-controls__validation {
-  display: flex;
-  justify-content: space-between;
-}
-
 /* buttons */
 .btn {
   cursor: pointer;
-
   transition: all 100ms ease;
+  border: 2px solid black;
+  background: white;
+  padding: 5px;
 }
 
 .btn--min {
@@ -39,8 +35,20 @@
   opacity: 1;
 }
 
-/* board */
+/* board controls */
 
+.board-controls__difficulty {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.board-controls__validation {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* board */
 .board {
   width: 95%;
   max-width: 600px;
@@ -71,6 +79,11 @@
   font-size: 150%;
   color: black;
   font-weight: 300;
+  margin: 0;
+}
+
+.cell:focus {
+  background: lightskyblue;
 }
 
 .cell:disabled {

@@ -49,6 +49,10 @@ function App() {
     setSolveStatus(solved ? "Solved" : "Broken");
   }
 
+  function reset() {
+    setProgress(JSON.parse(JSON.stringify(puzzle)));
+  }
+
   function solve() {
     setProgress(solvedPuzzle.current);
     setSolveStatus("Solved");
@@ -61,6 +65,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Sudoku!</h1>
       <Board puzzle={puzzle} setProgress={setProgress} progress={progress} />
       <BoardControls
         setDifficulty={setDifficulty}
@@ -68,6 +73,7 @@ function App() {
         validate={validate}
         difficulty={difficulty.current}
         solveStatus={solveStatus}
+        reset={reset}
       />
     </div>
   );

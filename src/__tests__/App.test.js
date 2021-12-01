@@ -29,34 +29,42 @@ describe("<App />", () => {
     await act(async () => {
       userEvent.click(easyButton);
     });
-    expect(screen.getByText("Difficulty:Easy")).toBeInTheDocument();
+    expect(screen.getByText("Difficulty: Easy")).toBeInTheDocument();
     await act(async () => {
       userEvent.click(mediumButton);
     });
-    expect(screen.getByText("Difficulty:Medium")).toBeInTheDocument();
+    expect(screen.getByText("Difficulty: Medium")).toBeInTheDocument();
     await act(async () => {
       userEvent.click(hardButton);
     });
-    expect(screen.getByText("Difficulty:Hard")).toBeInTheDocument();
+    expect(screen.getByText("Difficulty: Hard")).toBeInTheDocument();
   });
 
-  it("dispalys broken when validating incorrect puzzle", async () => {
+  it("resets when clicking reset", async () => {
+    await act(async () => render(<App />));
+    const clearButton = screen.getByText("Reset");
+    await act(async () => {
+      userEvent.click(clearButton);
+    });
+  });
+
+  it("displays broken when validating incorrect puzzle", async () => {
     await act(async () => render(<App />));
     const validateButton = screen.getByText("Validate");
     await act(async () => {
       userEvent.click(validateButton);
     });
-    expect(screen.getByText("Broken")).toBeInTheDocument();
+    expect(screen.getByText("Status: Broken")).toBeInTheDocument();
   });
 
   it("solves the puzzle when clicking solve", async () => {
     await act(async () => render(<App />));
     const solveButton = screen.getByText("Solve");
     userEvent.click(solveButton);
-    expect(screen.getByText("Solved")).toBeInTheDocument();
+    expect(screen.getByText("Status: Solved")).toBeInTheDocument();
   });
 
-  it("dispalys solved when validating correct puzzle", async () => {
+  it("displays solved when validating correct puzzle", async () => {
     await act(async () => render(<App />));
     const validateButton = screen.getByText("Validate");
     const solveButton = screen.getByText("Solve");
@@ -64,6 +72,6 @@ describe("<App />", () => {
       userEvent.click(solveButton);
     });
     userEvent.click(validateButton);
-    expect(screen.getByText("Solved")).toBeInTheDocument();
+    expect(screen.getByText("Status: Solved")).toBeInTheDocument();
   });
 });

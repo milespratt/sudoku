@@ -8,6 +8,7 @@ export default function BoardControls({
   solve,
   difficulty,
   solveStatus,
+  reset,
 }) {
   return (
     <div className="board-controls">
@@ -34,14 +35,20 @@ export default function BoardControls({
         >
           Random
         </button>
-        <button className="btn">Clear</button>
+        <button className="btn" onClick={() => reset()}>
+          Reset
+        </button>
       </div>
       <div className="board-controls__validation">
-        <button onClick={() => validate()}>Validate</button>
-        <span>{solveStatus}</span>
-        <span>Difficulty:{capitalize(difficulty)}</span>
+        <span>Status: {capitalize(solveStatus)}</span>
+        <span>Difficulty: {capitalize(difficulty)}</span>
       </div>
-      <button onClick={() => solve()}>Solve</button>
+      <button className="btn" onClick={() => validate()}>
+        Validate
+      </button>
+      <button className="btn" onClick={() => solve()}>
+        Solve
+      </button>
     </div>
   );
 }
