@@ -1,9 +1,8 @@
 import { DIFFICULTIES } from "../constants";
 
 export function getRandomDifficulty() {
-  const difficulties = ["easy", "medium", "hard"];
   const random = Math.floor(Math.random() * 3);
-  const randomDifficulty = difficulties[random];
+  const randomDifficulty = DIFFICULTIES[random];
   return randomDifficulty;
 }
 
