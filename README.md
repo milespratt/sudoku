@@ -2,7 +2,7 @@
 
 <img align="right" width="100" height="100" src="https://github.com/milespratt/sudoku/blob/main/src/assets/sudoku.png?raw=true">
 
-#Sudoku!
+#Sudoku
 
 A sudoku game built with React. Easy, Medium, and Hard puzzles with validation and solving.
 
