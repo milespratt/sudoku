@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 .board-controls {
   margin: 10px auto;
@@ -21,6 +21,7 @@
   border: 2px solid black;
   background: white;
   padding: 5px;
+  color: black;
 }
 
 .btn--min {
@@ -76,10 +77,12 @@
   text-align: center;
   border: 1px solid black;
   outline: none;
-  font-size: 150%;
-  color: black;
+  font-size: 140%;
+  color: black !important;
   font-weight: 300;
   margin: 0;
+  border-radius: 0 !important;
+  opacity: 1 !important;
 }
 
 .cell:focus {
