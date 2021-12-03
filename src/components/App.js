@@ -42,31 +42,57 @@ function App() {
     }
   }, [puzzle]);
 
+  function isValid(a, b) {
+    const progressString = JSON.stringify(a);
+    const solvedString = JSON.stringify(b);
+    const solved = progressString === solvedString;
+    return solved;
+  }
+
+  function updateProgress(newProgress) {
+    if (
+      solveStatus !== "unsolved" &&
+      !isValid(newProgress, solvedPuzzle.current)
+    ) {
+      setSolveStatus("unsolved");
+    } else if (isValid(newProgress, solvedPuzzle.current)) {
+      setSolveStatus("solved");
+    }
+    setProgress(newProgress);
+  }
+
   function validate() {
     const progressString = JSON.stringify(progress);
     const solvedString = JSON.stringify(solvedPuzzle.current);
     const solved = progressString === solvedString;
-    setSolveStatus(solved ? "Solved" : "Broken");
+    setSolveStatus(solved ? "solved" : "broken");
   }
 
   function reset() {
     setProgress(JSON.parse(JSON.stringify(puzzle)));
+    setSolveStatus("unsolved");
   }
 
   function solve() {
-    setProgress(solvedPuzzle.current);
-    setSolveStatus("Solved");
+    setProgress(JSON.parse(JSON.stringify(solvedPuzzle.current)));
+    setSolveStatus("solved");
   }
 
   function setDifficulty(value) {
     difficulty.current = value;
+    setSolveStatus("unsolved");
     setPuzzle(null);
   }
 
   return (
     <div className="App">
-      <h1>Sudoku!</h1>
-      <Board puzzle={puzzle} setProgress={setProgress} progress={progress} />
+      <h1>Sudoku</h1>
+      <Board
+        solveStatus={solveStatus}
+        puzzle={puzzle}
+        setProgress={updateProgress}
+        progress={progress}
+      />
       <BoardControls
         setDifficulty={setDifficulty}
         solve={solve}

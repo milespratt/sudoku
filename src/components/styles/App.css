@@ -1,27 +1,24 @@
 .App {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-}
-.board-controls {
-  margin: 10px auto;
-  width: 95%;
-  max-width: 600px;
   display: grid;
   grid-auto-flow: row;
-  grid-gap: 10px;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content min-content 1fr;
+  justify-items: center;
+  max-height: 900px;
 }
 
 /* buttons */
 .btn {
   cursor: pointer;
   transition: all 100ms ease;
-  border: 2px solid black;
-  background: white;
+  border: 2px solid var(--black);
+  background: var(--white);
   padding: 5px;
-  color: black;
+  color: var(--black);
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .btn--min {
@@ -34,83 +31,4 @@
 .btn--min:hover,
 .btn--active {
   opacity: 1;
-}
-
-/* board controls */
-
-.board-controls__difficulty {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.board-controls__validation {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* board */
-.board {
-  width: 95%;
-  max-width: 600px;
-  display: grid;
-  grid-template-columns: repeat(9, 11.11%);
-  grid-template-rows: repeat(9, 11.11%);
-  justify-content: center;
-  margin: 10px auto;
-  aspect-ratio: 1 / 1;
-}
-
-.loading-text {
-  grid-column: span 9;
-  grid-row: span 9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px dashed black;
-}
-
-/* cells */
-.cell {
-  background-color: white;
-  box-sizing: border-box;
-  text-align: center;
-  border: 1px solid black;
-  outline: none;
-  font-size: 140%;
-  color: black !important;
-  font-weight: 300;
-  margin: 0;
-  border-radius: 0 !important;
-  opacity: 1 !important;
-}
-
-.cell:focus {
-  background: lightskyblue;
-}
-
-.cell:disabled {
-  font-weight: bold;
-}
-
-/* columns */
-.col0,
-.col3,
-.col6 {
-  border-left: 3px solid black;
-}
-
-.col8 {
-  border-right: 3px solid black;
-}
-
-/* rows */
-.row0,
-.row3,
-.row6 {
-  border-top: 3px solid black;
-}
-
-.row8 {
-  border-bottom: 3px solid black;
 }
